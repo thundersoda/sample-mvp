@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.thundersoda.samplemvp.contract.MainActivityContract;
+
+public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
