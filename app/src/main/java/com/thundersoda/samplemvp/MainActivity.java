@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void setDataInRecyclerView(List<Pokemon> pokemons) {
+    public void showDataInRecyclerView(List<Pokemon> pokemons) {
 
     }
 }

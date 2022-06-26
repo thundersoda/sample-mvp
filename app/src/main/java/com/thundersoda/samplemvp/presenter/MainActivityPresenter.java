@@ -21,7 +21,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ma
 
     @Override
     public void OnSuccessRequest(List<Pokemon> pokemons) {
-        //view.setDataInRecyclerView();
+        //view.showDataInRecyclerView(pokemons);
     }
 
     @Override

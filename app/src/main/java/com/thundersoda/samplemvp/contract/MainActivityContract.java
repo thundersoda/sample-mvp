@@ -13,7 +13,7 @@ public interface MainActivityContract {
 
     interface View {
         //Metodo para cargar datos en el Recycler
-        void setDataInRecyclerView(List<Pokemon> pokemons);
+        void showDataInRecyclerView(List<Pokemon> pokemons);
     }
 
     interface Model {
