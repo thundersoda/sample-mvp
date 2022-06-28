@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     public void setUpElements() {
-        presenter = new MainActivityPresenter(this, new ModelPokemon());
+        presenter = new MainActivityPresenter(this, new PokemonRepository());
         presenter.RequestPokemonListService();
     }
 

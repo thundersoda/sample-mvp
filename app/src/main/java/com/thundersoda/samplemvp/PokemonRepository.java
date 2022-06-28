@@ -13,7 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ModelPokemon implements MainActivityContract.Model {
+public class PokemonRepository implements MainActivityContract.Model {
     List<Pokemon> pokemons;
 
     @Override
