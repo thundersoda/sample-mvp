@@ -15,16 +15,4 @@ public interface MainActivityContract {
         //Metodo para cargar datos en el Recycler
         void showDataInRecyclerView(List<Pokemon> pokemons);
     }
-
-    interface Model {
-        interface OnFinishedListener {
-
-            // en el OnSuccess se llama al método para car
-            void OnSuccessRequest(List<Pokemon> pokemons);
-            void OnErrorRequest(String errorMessage);
-        }
-
-        //se espera respuesta del listener para obtener la lista
-        void getListOfPokemons(OnFinishedListener onFinishedListener);
-    }
 }

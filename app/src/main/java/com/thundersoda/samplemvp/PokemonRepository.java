@@ -1,8 +1,5 @@
 package com.thundersoda.samplemvp;
 
-import android.util.Log;
-
-import com.thundersoda.samplemvp.contract.MainActivityContract;
 import com.thundersoda.samplemvp.model.Pokemon;
 import com.thundersoda.samplemvp.model.PokemonResponse;
 import com.thundersoda.samplemvp.networking.ApiClient;
@@ -13,10 +10,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PokemonRepository implements MainActivityContract.Model {
+public class PokemonRepository {
     List<Pokemon> pokemons;
 
-    @Override
+    public interface OnFinishedListener {
+        void onSuccess(List<Pokemon> pokemon);
+        void onFailure(String message);
+    }
+
     public void getListOfPokemons(OnFinishedListener onFinishedListener) {
         Call<PokemonResponse> call = ApiClient.buildApi().getPokemonList();
         call.enqueue(new Callback<PokemonResponse>() {
@@ -27,13 +28,13 @@ public class PokemonRepository implements MainActivityContract.Model {
                     pokemons = pokemonList.getData();
 
                     //Pasamos la respuesta del servicio al OnSuccessRequest
-                    onFinishedListener.OnSuccessRequest(pokemons);
+                    onFinishedListener.onSuccess(pokemons);
                 }
             }
 
             @Override
             public void onFailure(Call<PokemonResponse> call, Throwable t) {
-                onFinishedListener.OnErrorRequest(t.getMessage());
+                onFinishedListener.onFailure(t.getMessage());
             }
         });
     }

@@ -1,31 +1,32 @@
 package com.thundersoda.samplemvp.presenter;
 
+import com.thundersoda.samplemvp.PokemonRepository;
 import com.thundersoda.samplemvp.contract.MainActivityContract;
 import com.thundersoda.samplemvp.model.Pokemon;
 
 import java.util.List;
 
-public class MainActivityPresenter implements MainActivityContract.Presenter, MainActivityContract.Model.OnFinishedListener {
+public class MainActivityPresenter implements MainActivityContract.Presenter {
     MainActivityContract.View view;
-    MainActivityContract.Model model;
+    PokemonRepository pokemonRepository;
 
-    public MainActivityPresenter(MainActivityContract.View view, MainActivityContract.Model model) {
+    public MainActivityPresenter(MainActivityContract.View view, PokemonRepository pokemonRepository) {
         this.view = view;
-        this.model = model;
+        this.pokemonRepository = pokemonRepository;
     }
 
     @Override
     public void RequestPokemonListService() {
-        model.getListOfPokemons(this);
-    }
+        pokemonRepository.getListOfPokemons(new PokemonRepository.OnFinishedListener() {
+            @Override
+            public void onSuccess(List<Pokemon> pokemon) {
 
-    @Override
-    public void OnSuccessRequest(List<Pokemon> pokemons) {
-        //view.showDataInRecyclerView(pokemons);
-    }
+            }
 
-    @Override
-    public void OnErrorRequest(String errorMessage) {
+            @Override
+            public void onFailure(String message) {
 
+            }
+        });
     }
 }
