@@ -20,7 +20,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         pokemonRepository.getListOfPokemons(new PokemonRepository.OnFinishedListener() {
             @Override
             public void onSuccess(List<Pokemon> pokemon) {
-
+                view.showDataInRecyclerView(pokemon);
             }
 
             @Override
