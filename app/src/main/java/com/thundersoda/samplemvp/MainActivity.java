@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     public void setUpPresenter() {
-        presenter = new MainActivityPresenter(this, new PokemonRepository());
+        presenter = new MainActivityPresenter(this);
         presenter.RequestPokemonListService();
     }
 

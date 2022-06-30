@@ -10,9 +10,9 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
     MainActivityContract.View view;
     PokemonRepository pokemonRepository;
 
-    public MainActivityPresenter(MainActivityContract.View view, PokemonRepository pokemonRepository) {
+    public MainActivityPresenter(MainActivityContract.View view) {
         this.view = view;
-        this.pokemonRepository = pokemonRepository;
+        this.pokemonRepository = new PokemonRepository();
     }
 
     @Override
