@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     public void setUpPresenter() {
         presenter = new MainActivityPresenterImpl(this);
-        presenter.RequestPokemonListService();
+        presenter.requestPokemonListService();
     }
 
     @Override

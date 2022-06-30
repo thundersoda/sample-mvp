@@ -17,7 +17,7 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
     }
 
     @Override
-    public void RequestPokemonListService() {
+    public void requestPokemonListService() {
         pokemonRepository.getListOfPokemons(new PokemonRepositoryImpl.OnFinishedListener() {
             @Override
             public void onSuccess(List<Pokemon> pokemon) {
