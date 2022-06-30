@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface PokemonRepository {
 
+    void getListOfPokemons(OnFinishedListener onFinishedListener);
+
     interface OnFinishedListener {
         void onSuccess(List<Pokemon> pokemon);
         void onFailure(String message);

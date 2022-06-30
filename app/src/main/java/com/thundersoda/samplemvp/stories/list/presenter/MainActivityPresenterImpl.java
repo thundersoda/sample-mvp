@@ -1,5 +1,6 @@
 package com.thundersoda.samplemvp.stories.list.presenter;
 
+import com.thundersoda.samplemvp.stories.list.model.PokemonRepository;
 import com.thundersoda.samplemvp.stories.list.model.PokemonRepositoryImpl;
 import com.thundersoda.samplemvp.model.Pokemon;
 import com.thundersoda.samplemvp.stories.list.view.MainActivityView;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class MainActivityPresenterImpl implements MainActivityPresenter {
     MainActivityView view;
-    PokemonRepositoryImpl pokemonRepository;
+    PokemonRepository pokemonRepository;
 
     public MainActivityPresenterImpl(MainActivityView view) {
         this.view = view;
