@@ -1,4 +1,4 @@
-package com.thundersoda.samplemvp;
+package com.thundersoda.samplemvp.stories.list.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,16 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.thundersoda.samplemvp.R;
 import com.thundersoda.samplemvp.adapter.PokemonAdapter;
-import com.thundersoda.samplemvp.contract.MainActivityContract;
 import com.thundersoda.samplemvp.model.Pokemon;
-import com.thundersoda.samplemvp.presenter.MainActivityPresenter;
+import com.thundersoda.samplemvp.stories.list.presenter.MainActivityPresenterImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
-    MainActivityPresenter presenter;
+public class MainActivity extends AppCompatActivity implements MainActivityView {
+    MainActivityPresenterImpl presenter;
     PokemonAdapter pokemonAdapter;
     List<Pokemon> pkmnList;
     RecyclerView pokemonRecycler;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     public void setUpPresenter() {
-        presenter = new MainActivityPresenter(this);
+        presenter = new MainActivityPresenterImpl(this);
         presenter.RequestPokemonListService();
     }
 

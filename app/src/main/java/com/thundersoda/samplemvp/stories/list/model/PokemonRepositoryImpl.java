@@ -1,4 +1,4 @@
-package com.thundersoda.samplemvp;
+package com.thundersoda.samplemvp.stories.list.model;
 
 import com.thundersoda.samplemvp.model.Pokemon;
 import com.thundersoda.samplemvp.model.PokemonResponse;
@@ -10,13 +10,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PokemonRepository {
+public class PokemonRepositoryImpl implements PokemonRepository {
     List<Pokemon> pokemons;
-
-    public interface OnFinishedListener {
-        void onSuccess(List<Pokemon> pokemon);
-        void onFailure(String message);
-    }
 
     public void getListOfPokemons(OnFinishedListener onFinishedListener) {
         Call<PokemonResponse> call = ApiClient.buildApi().getPokemonList();
