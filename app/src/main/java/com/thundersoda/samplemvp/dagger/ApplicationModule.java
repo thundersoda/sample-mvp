@@ -1,8 +1,12 @@
 package com.thundersoda.samplemvp.dagger;
 
 import android.app.Application;
+import android.content.Context;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
+import dagger.Provides;
 
 @Module
 public class ApplicationModule {
@@ -13,4 +17,9 @@ public class ApplicationModule {
         this.application = application;
     }
 
+    @Provides
+    @Singleton
+    public Context providesContext(){
+        return application;
+    }
 }

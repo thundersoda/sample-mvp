@@ -11,9 +11,8 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
     MainActivityView view;
     PokemonRepository pokemonRepository;
 
-    public MainActivityPresenterImpl(MainActivityView view) {
-        this.view = view;
-        this.pokemonRepository = new PokemonRepositoryImpl();
+    public MainActivityPresenterImpl(PokemonRepository pokemonRepository) {
+        this.pokemonRepository = pokemonRepository;
     }
 
     @Override
@@ -29,5 +28,10 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
 
             }
         });
+    }
+
+    @Override
+    public void setView(MainActivityView view) {
+        this.view = view;
     }
 }

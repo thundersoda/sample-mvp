@@ -1,32 +1,39 @@
 package com.thundersoda.samplemvp.stories.list.view;
 
+import android.graphics.Color;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.os.Bundle;
-
 import com.thundersoda.samplemvp.R;
 import com.thundersoda.samplemvp.adapter.PokemonAdapter;
+import com.thundersoda.samplemvp.dagger.App;
 import com.thundersoda.samplemvp.model.Pokemon;
-import com.thundersoda.samplemvp.stories.list.presenter.MainActivityPresenterImpl;
+import com.thundersoda.samplemvp.stories.list.presenter.MainActivityPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity implements MainActivityView {
-    MainActivityPresenterImpl presenter;
     PokemonAdapter pokemonAdapter;
     List<Pokemon> pkmnList;
     RecyclerView pokemonRecycler;
+
+    @Inject
+    MainActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ((App) getApplication()).getComponent().inject(this);
         pkmnList = new ArrayList<>();
 
         setUpToolbar();
@@ -50,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     public void setUpPresenter() {
-        presenter = new MainActivityPresenterImpl(this);
         presenter.requestPokemonListService();
     }
 
@@ -59,5 +65,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         pkmnList.addAll(pokemons);
         pokemonAdapter = new PokemonAdapter(pkmnList, this);
         pokemonRecycler.setAdapter(pokemonAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
     }
 }
