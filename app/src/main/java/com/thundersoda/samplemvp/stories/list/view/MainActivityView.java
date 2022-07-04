@@ -7,4 +7,5 @@ import java.util.List;
 public interface MainActivityView {
 
     void showDataInRecyclerView(List<Pokemon> pokemons);
+    void hideProgressBar();
 }

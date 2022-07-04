@@ -2,6 +2,8 @@ package com.thundersoda.samplemvp.stories.list.view;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     PokemonAdapter pokemonAdapter;
     List<Pokemon> pkmnList;
     RecyclerView pokemonRecycler;
+    ProgressBar progressBar;
 
     @Inject
     MainActivityPresenter presenter;
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         setUpToolbar();
         setUpElements();
-        setUpPresenter();
+        getData();
     }
 
     public void setUpToolbar() {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     }
 
     public void setUpElements() {
+        progressBar = findViewById(R.id.progress_bar);
         pokemonRecycler = findViewById(R.id.pokemon_recycler_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         pokemonRecycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
-    public void setUpPresenter() {
+    public void getData() {
         presenter.requestPokemonListService();
     }
 
@@ -70,6 +74,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         pkmnList.addAll(pokemons);
         pokemonAdapter = new PokemonAdapter(pkmnList, this);
         pokemonRecycler.setAdapter(pokemonAdapter);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+        pokemonRecycler.setVisibility(View.VISIBLE);
     }
 
     @Override

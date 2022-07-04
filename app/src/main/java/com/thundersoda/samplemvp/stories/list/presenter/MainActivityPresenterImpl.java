@@ -21,11 +21,12 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
             @Override
             public void onSuccess(List<Pokemon> pokemon) {
                 view.showDataInRecyclerView(pokemon);
+                view.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
-
+                view.hideProgressBar();
             }
         });
     }
