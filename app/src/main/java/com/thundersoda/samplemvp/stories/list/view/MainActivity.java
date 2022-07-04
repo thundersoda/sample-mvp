@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.thundersoda.samplemvp.MainActivityModule;
 import com.thundersoda.samplemvp.R;
 import com.thundersoda.samplemvp.adapter.PokemonAdapter;
-import com.thundersoda.samplemvp.dagger.App;
+import com.thundersoda.samplemvp.dagger.DaggerApplicationComponent;
 import com.thundersoda.samplemvp.model.Pokemon;
 import com.thundersoda.samplemvp.stories.list.presenter.MainActivityPresenter;
 
@@ -33,7 +34,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((App) getApplication()).getComponent().inject(this);
+        DaggerApplicationComponent.builder()
+                .mainActivityModule(new MainActivityModule())
+                .build()
+                .inject(this);
+
         pkmnList = new ArrayList<>();
 
         setUpToolbar();
