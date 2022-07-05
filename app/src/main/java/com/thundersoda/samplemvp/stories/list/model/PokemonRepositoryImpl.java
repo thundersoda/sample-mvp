@@ -24,6 +24,8 @@ public class PokemonRepositoryImpl implements PokemonRepository {
 
                     //Pasamos la respuesta del servicio al OnSuccessRequest
                     onFinishedListener.onSuccess(pokemons);
+                } else {
+                    onFinishedListener.onFailure(response.message());
                 }
             }
 

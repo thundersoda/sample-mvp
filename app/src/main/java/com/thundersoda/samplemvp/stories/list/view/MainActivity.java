@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -80,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
     public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
         pokemonRecycler.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override

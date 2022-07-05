@@ -8,4 +8,5 @@ public interface MainActivityView {
 
     void showDataInRecyclerView(List<Pokemon> pokemons);
     void hideProgressBar();
+    void showErrorMessage(String message);
 }

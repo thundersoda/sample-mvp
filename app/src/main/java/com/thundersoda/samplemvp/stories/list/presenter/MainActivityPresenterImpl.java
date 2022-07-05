@@ -27,6 +27,7 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
             @Override
             public void onFailure(String message) {
                 view.hideProgressBar();
+                view.showErrorMessage(message);
             }
         });
     }
